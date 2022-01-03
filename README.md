@@ -1,44 +1,33 @@
-# Desafio de programação 1
-A idéia deste desafio é nos permitir avaliar melhor as habilidades de candidatos à vagas de programador, de vários níveis.
+﻿# Desafio de programação 1
 
-Este desafio deve ser feito por você em sua casa. Gaste o tempo que você quiser, porém normalmente você não deve precisar de mais do que algumas horas.
-
-## Instruções de entrega do desafio
-1. Primeiro, faça um fork deste projeto para sua conta no Github (crie uma se você não possuir).
-2. Em seguida, implemente o projeto tal qual descrito abaixo, em seu próprio fork.
-3. Crie as instruções de instalação e execução do aplicativo em seu readme.md
-4. Por fim, envie o link do seu repositorio para avaliarmos seu código
+## Script banco
+1. Na pasta contem o arquivo "scriptBanco.sql". Que possui o script para criar o banco de dados.
+2. Este deve ser executado no SQLSERVER.
 
 
-## Descrição do projeto
-Você recebeu um arquivo de texto com os dados de vendas da empresa. Precisamos criar uma maneira para que estes dados sejam importados para um banco de dados.
 
-Sua tarefa é criar uma interface web que aceite upload de arquivos, normalize os dados e armazene-os no banco de dados.
+## Instruções Projeto
 
-Sua aplicação web DEVE:
+1. Ao abrir o projeto, ir no Gerenciador de Pacotes Nuget (Package Manager Console)
+2. Executar o comando "Update-Package -reinstall"  para atualizar os pacotes
+3. Abrir o arquivo "web.config"
+4. localizar a tag "connectionStrings" e alterar as seguintes informações:
+4.1.  Data Source = "Nome do seu servidor SQL"
+4.2.  User ID = "Usuario do ser banco" 
+4.3.  Password = "Senha do usuario do ser banco" 
+5. Compilar o Projeto
+6. Executar o projeto
 
-1. Aceitar (via um formulário) o upload de arquivos text, com dados separados por TAB testar o aplicativo usando o arquivo fornecido. A primeira linha do arquivo tem o nome das colunas. Você pode assumir que as colunas estarão sempre nesta ordem, e que sempre haverá uma linha de cabeçalho. Um arquivo de exemplo chamado 'dados.txt' está incluído neste repositório.
-2. Interpretar ("parsear") o arquivo recebido, normalizar os dados, e salvar corretamente a informação em um banco de dados relacional.
-3. Exibir todos os registros importados, bem como a receita bruta total dos registros contidos no arquivo enviado após o upload + parser.
-4. Se sua vaga é para Javascript, ser escrita obrigatoriamente em: NodeJS e MySQL
-5. Se sua vaga é para .Net ser escrita obrigatoriamente em: C# última versão, SQL Server (pode ser express) 
-6. Ser simples de configurar e rodar a partir das instruções fornecidas, 
-7. Ter um teste de model e controller automatizado para a funcionalidade pedida
-8. Ter uma boa aparecia e ser fácil de usar
+## Rodando o Projeto
 
-## Avaliação
-Seu projeto será avaliado de acordo com os seguintes critérios. 
+1. Ao Rodar o projeto será apresentado a tela de Importação de Dados
+2. na tela possui um botão para selecionar o Arquivo de Importação de DADOS (dados.txt)
+3. Após selecionar o arquivo, clicar no Botão Importar.
+4. Na mesma tela será apresentado os dados da importação. 
+5. na grade, foi acrescentado um Filtro de Periodo. Para caso desejar filtrar dados importados em outra data
 
-1. Sua aplicação atende funcionalmente o que foi pedido
-2. Você documentou a maneira de configurar o ambiente e rodar sua aplicação na maquina do avaliador
-3. Você seguiu as instruções enviadas
-4. Voce segue as boas práticas de programação e entrega para o Cliente
-5. O código escrito é facil de entender e manter
-6. Você se preocupa com o uso do aplicativo pelo Usuário
 
-Adicionalmente, tentaremos verificar a sua familiarização com as bibliotecas padrões (standard libs), bem como sua experiência com programação orientada a objetos a partir da estrutura de seu projeto, preucupação com o objetivo da aplicação e do seu uso pelo usuário, suporte e manutenção do código por outros desenvolvdores
 
-### Referência
 
-Este desafio foi baseado neste outro desafio: https://github.com/lschallenges/data-engineering
+
 

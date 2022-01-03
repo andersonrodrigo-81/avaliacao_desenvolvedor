@@ -1,6 +1,7 @@
 ﻿using Importador.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -74,6 +75,75 @@ namespace ImportacaoDados.DAOs
             }
 
             return listaRetorno;
+        }
+
+        public int InsertOrUpdate(CompradorModel model)
+        {
+            int retorno = 0;
+
+            try
+            {
+
+                string sql = string.Empty;
+
+                if (model.CodigoId == 0)
+                {
+                    sql = Insert();
+                }
+                else
+                {
+                    sql = Update();
+                }
+
+                SqlCommand command = new SqlCommand();
+                command.Connection = Conexao.connection;
+
+                command.CommandText = sql.ToString();
+
+                command.Parameters.AddWithValue("@CodigoId", model.CodigoId);
+                command.Parameters.AddWithValue("@NomeComprador", model.NomeComprador);
+                command.Parameters.AddWithValue("@id", 0).Direction = ParameterDirection.Output;
+                Conexao.Conectar();
+
+                command.ExecuteNonQuery();
+
+                retorno = Convert.ToInt32(command.Parameters["@id"].Value);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Conexao.DesConectar();
+            }
+
+            return retorno;
+
+        }
+
+        private string Insert()
+        {
+            var sql = new StringBuilder();
+            sql.AppendLine(" insert into Comprador ");
+            sql.AppendLine(" (NomeComprador)" );
+            sql.AppendLine(" values ");
+            sql.AppendLine(" (@NomeComprador ) ");
+            sql.AppendLine(" SET @id = SCOPE_IDENTITY()");
+
+            return sql.ToString();
+        }
+
+        private string Update()
+        {
+            var sql = new StringBuilder();
+            sql.AppendLine(" update Comprador set ");
+            sql.AppendLine(" NomeComprador = @NomeComprador");
+            sql.AppendLine(" where ");
+            sql.AppendLine(" CodigoId = @CodigoId");
+
+            return sql.ToString();
         }
 
     }

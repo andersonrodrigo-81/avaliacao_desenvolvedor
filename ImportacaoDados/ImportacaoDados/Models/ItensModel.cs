@@ -12,10 +12,12 @@ namespace Importador.Models
     {
         [Key]
         [Display(Name = "Código")]
+        [Column("CodigoId")]
         public int CodigoId { get; set; }
         
         [MaxLength(200)]
         [Display(Name = "Descrição")]
+        [Column("DescricaoItem")]
         public string DescricaoItem { get; set; }
     }
 }
